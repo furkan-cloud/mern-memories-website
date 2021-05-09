@@ -5,13 +5,14 @@ import Form from "./components/Form/Form";
 import memories from "./images/memories.png";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
-import { getPosts } from "./actions";
+import { getPosts } from "./actions/index";
 
 const App = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("deneme");
     dispatch(getPosts());
   }, [dispatch]);
 
