@@ -6,3 +6,5 @@ export default combineReducers({
   //   posts: posts,
   posts,
 });
+
+// export const reducers = combineReducers({ posts });
