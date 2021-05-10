@@ -20,8 +20,6 @@ app.use("/posts", postRoutes);
 
 // require("dotenv").config();
 
-const CONNECTION_URL =
-  "mongodb+srv://dbUser:Q4MweZuf1hPJ85lX@cluster0.auwzn.mongodb.net/memories?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 5000;
 
