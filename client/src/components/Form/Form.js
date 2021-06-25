@@ -3,9 +3,8 @@ import useStyles from "./styles";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 // import useStyles from "./styles";
-import {useDispatch} from "react-redux"
-import { createPost } from "../../actions";
-
+import { useDispatch } from "react-redux";
+import { createPost } from "../../actions/index";
 
 const Form = () => {
   const [postData, setPostData] = useState({
@@ -13,15 +12,15 @@ const Form = () => {
     title: "",
     message: "",
     tags: "",
-    selectedField: "",
+    selectedFile: "",
   });
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(createPost(postData))
+    console.log("postdata", postData);
+    dispatch(createPost(postData));
   };
 
   const clear = () => {};
@@ -75,31 +74,31 @@ const Form = () => {
           <FileBase
             type="file"
             multiple={false}
-            onDone={(base64) =>
+            onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
-          ></FileBase>
-          <Button
-            className={classes.buttonSubmit}
-            variant="container"
-            color="primary"
-            size="large"
-            type="submit"
-            fullWidth
-          >
-            Submit
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            type="submit"
-            onClick={clear}
-            fullWidth
-          >
-            Clear
-          </Button>
+          />
         </div>
+        <Button
+          className={classes.buttonSubmit}
+          variant="container"
+          color="primary"
+          size="large"
+          type="submit"
+          fullWidth
+        >
+          Submit
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          type="submit"
+          onClick={clear}
+          fullWidth
+        >
+          Clear
+        </Button>
       </form>
     </Paper>
   );
