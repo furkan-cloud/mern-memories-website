@@ -9,7 +9,7 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-// dotenv.config();
+dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -20,13 +20,10 @@ app.use("/posts", postRoutes);
 
 // require("dotenv").config();
 
-const CONNECTION_URL =
-  "mongodb+srv://dbUser:Q4MweZuf1hPJ85lX@cluster0.auwzn.mongodb.net/memories?retryWrites=true&w=majority";
-
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

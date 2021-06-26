@@ -41,9 +41,9 @@ const Post = ({ post, setCurrentId }) => {
           <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
-      <div>
+      <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => `#${tag}`)}
+          {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
       <Typography
@@ -66,7 +66,7 @@ const Post = ({ post, setCurrentId }) => {
           onClick={() => dispatch(likePost(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" />
-          Like {post.likeCount}
+          &nbsp; Like &nbsp; {post.likeCount}
         </Button>
         <Button
           size="small"
