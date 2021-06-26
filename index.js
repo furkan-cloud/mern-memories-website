@@ -24,14 +24,9 @@ app.use("/posts", postRoutes);
 //   res.send("Hello to memories API");
 // });
 
-const PORT = process.env.PORT || 5000;
+console.log("backend");
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(process.env.CONNECTION_URL, {
@@ -42,5 +37,14 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
   .catch((error) => console.error("error mongoose", error.message));
+
+console.log("db connected");
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 mongoose.set("useFindAndModify", false);

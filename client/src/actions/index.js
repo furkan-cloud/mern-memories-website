@@ -13,7 +13,7 @@ export const getPosts = () => async (dispatch) => {
     console.log("data", data);
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
-    console.log("d", error.message);
+    console.log("d", error);
   }
 };
 
@@ -41,7 +41,7 @@ export const updatePost = (id, post) => async (dispatch) => {
 
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
-    console.log("erroraction", error.message);
+    console.log("erroraction", error);
   }
 };
 
